@@ -6,16 +6,12 @@ void SetCurrentCursorPos(int x, int y)
 	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), position);
 }
 //커서 위치를 반환하는 함수
-COORD GetCurrentCursorPos(void)
+
+COORD GetCurrentCursorPos()
 {
-	COORD curPoint;
 	CONSOLE_SCREEN_BUFFER_INFO curInfo;
-
 	GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &curInfo);
-	curPoint.X = curInfo.dwCursorPosition.X;
-	curPoint.Y = curInfo.dwCursorPosition.Y;
-
-	return curPoint;
+	return curInfo.dwCursorPosition;
 }
 //커서를 제거하는 함수
 void RemoveCursor(void)
